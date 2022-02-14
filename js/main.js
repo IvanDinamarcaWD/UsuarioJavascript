@@ -19,6 +19,7 @@ $(document).ready(function() {
     }
 
     cargarListaRegiones()
+    cargarListaCandidatos()
 })
 //Función para que usuario ingrese nombre completo con solo letras
 $("#NombreCompleto").keyup(function(){
@@ -232,5 +233,34 @@ $("#Region").change(function(){
     });
 
 })
+//
+//Función para cargar candidatos
+function cargarListaCandidatos(){
+    const action = "listarCandidatos";
+    let data = "";
+
+    $.ajax({
+        url  :"php/ajaxData.php",
+        type : "Post",
+        async: true,
+        data :{
+            action:action
+        },
+        beforeSend:function(){
+
+        },
+        success:function(response){
+            if(response == "notData"){
+                data = "No hay datos para mostrar.";
+            }else{
+                data = JSON.parse(response);
+            }
+            $("#Candidato").html(data);
+        },
+        error: function(error){
+
+        }
+    });
+}
 //
 

@@ -63,8 +63,17 @@
                                 <label for="Comuna">Comuna</label>
                             </td>
                             <td>
-                                <select name="Comuna" id="Comuna" disabled="true">
+                                <select name="Comuna" id="Comuna" disabled="disabled">
                                     <option value="0" selected>Seleccione primero su región</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="Candidato">Candidato</label>
+                            </td>
+                            <td>
+                                <select name="Candidato" id="Candidato">
                                 </select>
                             </td>
                         </tr>
