@@ -3,6 +3,8 @@ $(document).ready(function() {
     let RUT = $("#RUT").val()
     let Alias = $("#Alias").val()
     let Email = $("#Email").val()
+
+    $("#NombreCompleto").focus()
     if(nombreCompleto == ""){
         $("#respuestaNombreCompleto").html(" Por favor ingrese su nombre")
     }
@@ -195,5 +197,40 @@ function cargarListaRegiones(){
         }
     });
 }
+//
+//Función para cargar comunas dependiendo de la Región
+$("#Region").change(function(){
+    let regionSeleccionada = $(this).children(":selected").val()
+
+    const action = "listarComunas";
+    const idRegion = regionSeleccionada
+    let data = "";
+    $("#Comuna").removeAttr("disabled")
+
+    $.ajax({
+        url  :"php/ajaxData.php",
+        type : "Post",
+        async: true,
+        data :{
+            action:action,
+            idRegion:idRegion
+        },
+        beforeSend:function(){
+
+        },
+        success:function(response){
+            if(response == "notData"){
+                data = "No hay datos para mostrar.";
+            }else{
+                data = JSON.parse(response);
+            }
+            $("#Comuna").html(data);
+        },
+        error: function(error){
+
+        }
+    });
+
+})
 //
 

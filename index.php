@@ -55,7 +55,16 @@
                             </td>
                             <td>
                                 <select name="Region" id="Region">
-                                    
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="Comuna">Comuna</label>
+                            </td>
+                            <td>
+                                <select name="Comuna" id="Comuna" disabled="true">
+                                    <option value="0" selected>Seleccione primero su región</option>
                                 </select>
                             </td>
                         </tr>
