@@ -15,6 +15,8 @@ $(document).ready(function() {
     if(Email == ""){
         $("#respuestaEmail").html(" Por favor ingrese correo válido")
     }
+
+    cargarListaRegiones()
 })
 //Función para que usuario ingrese nombre completo con solo letras
 $("#NombreCompleto").keyup(function(){
@@ -28,6 +30,7 @@ $("#NombreCompleto").keyup(function(){
         $("#respuestaNombreCompleto").html("")
     }
 })
+//
 //Función que valida Alias superior a 5 caracteres
 $("#Alias").keyup(function(){
 
@@ -163,5 +166,34 @@ $("#Email").keyup(function(){
     }
     */
 })
+//
+//Función para cargar regiones
+function cargarListaRegiones(){
+    const action = "listarRegiones";
+    let data = "";
+
+    $.ajax({
+        url  :"php/ajaxData.php",
+        type : "Post",
+        async: true,
+        data :{
+            action:action
+        },
+        beforeSend:function(){
+
+        },
+        success:function(response){
+            if(response == "notData"){
+                data = "No hay datos para mostrar.";
+            }else{
+                data = JSON.parse(response);
+            }
+            $("#Region").html(data);
+        },
+        error: function(error){
+
+        }
+    });
+}
 //
 
